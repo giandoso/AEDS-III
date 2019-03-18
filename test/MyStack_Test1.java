@@ -1,5 +1,5 @@
 
-import dataStructure.MyStack;
+import myStack.MyStack;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
