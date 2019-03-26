@@ -8,7 +8,7 @@ package mathFunctionComplexity;
  *
  * @author 2015.1.08.029
  */
-public class GoodFibonacci {
+public class BinetFibonacci {
 
     public static long iterations = 0;
     public static double GR = 1.61803398875;

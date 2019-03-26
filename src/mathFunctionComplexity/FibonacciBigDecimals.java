@@ -6,7 +6,6 @@
 package mathFunctionComplexity;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.math.RoundingMode;
 
 /**
@@ -38,6 +37,6 @@ public class FibonacciBigDecimals {
     }
 
     public static void main(String[] args) {
-        System.out.println(fibonacci(10000));
+        System.out.println(fibonacci(100));
     }
 }
