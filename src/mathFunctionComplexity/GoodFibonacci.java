@@ -1,6 +1,6 @@
- // Implementar utilizando a formula de binet
-/*Essa é uma fórmula fechada, tornando possível o cálculo de
-*um termo específico na sequência sem o conhecimento dos anteriores. 
+// Implementar utilizando a formula de binet
+/* Essa é uma fórmula fechada, tornando possível o cálculo de
+ * um termo específico na sequência sem o conhecimento dos anteriores. 
  */
 package mathFunctionComplexity;
 
@@ -24,7 +24,7 @@ public class GoodFibonacci {
 
     public static void main(String[] args) {
         System.out.println("Complexidade O(1)");
-        int n = 15;
+        int n = 3;
         iterations = iterationsCount(n);
         System.out.println("n = " + n);
         System.out.println("R: " + fibonacci(n) + ", com " + iterations + " iterações");

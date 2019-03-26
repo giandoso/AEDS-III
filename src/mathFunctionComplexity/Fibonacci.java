@@ -24,7 +24,7 @@ public class Fibonacci {
 
     public static void main(String[] args) {
         System.out.println("Complexidade O(n) + recursividade");
-        int n = 15;
+        int n = 3;
         System.out.println("n = " + n);
         System.out.println("R: " + fibonacci(n) + ", com " + iterations + " iterações");
     }
