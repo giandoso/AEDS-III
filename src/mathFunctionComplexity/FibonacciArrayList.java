@@ -5,31 +5,30 @@
  */
 package mathFunctionComplexity;
 
-import java.util.HashMap;
 import java.math.BigInteger;
+import java.util.ArrayList;
 
 /**
  *
  * @author 2015.1.08.029
  */
-public class FibonacciHashMap {
-
-    public static HashMap<Integer, BigInteger> map = new HashMap<>();
+public class FibonacciArrayList {
+    public static ArrayList<BigInteger> arr = new ArrayList<>();
 
     public static BigInteger fibonacci(Integer n) {
 
-        if (map.get(n) != null) {
-            return map.get(n);
+        if (n < arr.size()) {
+            return arr.get(n);
         } else {
-            map.put(n, fibonacci(n-1).add(fibonacci(n-2)));
-            return map.get(n);
+            arr.add(n, fibonacci(n-1).add(fibonacci(n-2)));
+            return arr.get(n);
         }
     }
 
     public static void main(String[] args) {
-        map.put(0, new BigInteger("1"));
-        map.put(1, new BigInteger("1"));
-        map.put(2, new BigInteger("1"));
+        arr.add(0, new BigInteger("1"));
+        arr.add(1, new BigInteger("1"));
+        arr.add(2, new BigInteger("1"));
         System.out.println(fibonacci(250000));
     }
 }
