@@ -9,20 +9,29 @@ package unionFind;
  *
  * @author 2015.1.08.029
  */
-// SEM PATH COMPRESSION
-public class UnionFind {
-
+public class unionFindPathCompression {
+    
     public static int[] pai = new int[12]; // DEFINIR QUANTIDADE DE ELEMENTOS
 
     public static void union(int p, int q) { // Realiza a união entre p e q
         System.out.println("Union(" + p + "," + q + ")");
         int countP = count(p);
         int countQ = count(q);
-        // sem path compression
-        if (countP >= countQ) {       
-            pai[findFather(q)] = findFather(p);
+        //com path compression
+        if (countP > countQ) {
+            int aux = pai[q];
+            for (int i = 0; i < pai.length; i++) {
+                if (pai[i] == aux) { // Itera sobre id e encontra o grupo de q
+                    pai[i] = pai[p]; // seta o grupo de q com o id de p
+                }
+            }
         } else {
-            pai[findFather(p)] = findFather(q);
+            int aux = pai[p];
+            for (int i = 0; i < pai.length; i++) {
+                if (pai[i] == aux) { // Itera sobre id e encontra o grupo de q
+                    pai[i] = pai[q]; // seta o grupo de p com o id de q
+                }
+            }
         }
     }
 
@@ -31,6 +40,7 @@ public class UnionFind {
             n = pai[n];
         }
         return n;
+
     }
 
     public static int find(int p) { // Grupo de 'p' dentro de id
@@ -99,8 +109,6 @@ public class UnionFind {
         printId();
         union(11, 10);
         printId();
-        System.out.println(findFather(10));
 
-//        System.out.println(find(5));
     }
 }
