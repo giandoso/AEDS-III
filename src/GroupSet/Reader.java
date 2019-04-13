@@ -28,7 +28,7 @@ public final class Reader {
     static int[][] m;
 
     public Reader() throws FileNotFoundException, IOException {
-        read("/home/2015.1.08.029/NetBeansProjects/AEDS-III/src/GroupSet/tp01_instancia.paa");
+        read("/home/giandoso/NetBeansProjects/AEDS-III/src/GroupSet/tp01_instancia.paa");
     }
 
     public void read(String filename) throws FileNotFoundException, IOException {
