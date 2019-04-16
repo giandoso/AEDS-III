@@ -19,7 +19,7 @@ public class BestFitChange {
     static Random generator = new Random();
 
     public static void main(String[] args) throws IOException, CloneNotSupportedException {
-        Reader r = new Reader();
+        Reader r = new Reader("src/GroupSet/tp01_instancia.paa");
         int[][] groups = new int[Reader.total_groups][];
         initGroups(groups); // inicializa sequencial
         initRandom(groups); // init random ( depende do sequencial )

@@ -27,8 +27,8 @@ public final class Reader {
     static int[] group_sizes;
     static int[][] m;
 
-    public Reader() throws FileNotFoundException, IOException {
-        read("/home/giandoso/NetBeansProjects/AEDS-III/src/GroupSet/tp01_instancia.paa");
+    public Reader(String path) throws FileNotFoundException, IOException {
+        read(path);
     }
 
     public void read(String filename) throws FileNotFoundException, IOException {

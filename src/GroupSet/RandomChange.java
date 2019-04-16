@@ -19,7 +19,7 @@ public class RandomChange {
     static Random generator = new Random();
 
     public static void main(String[] args) throws IOException, CloneNotSupportedException {
-        Reader r = new Reader();
+        Reader r = new Reader("src/GroupSet/tp01_instancia.paa");
         int[][] groups = new int[Reader.total_groups][];
         int[][] backup = new int[Reader.total_groups][];
 
@@ -39,7 +39,6 @@ public class RandomChange {
             } else {
                 groups = get(backup);
             }
-
         }
 
         System.out.println(evaluate(groups));
@@ -69,7 +68,6 @@ public class RandomChange {
             }
         }
         return holder;
-
     }
 
     static void see(int[][] m) {
