@@ -18,7 +18,7 @@ public class Reader {
 
     File f;
     Scanner s;
-    static int[][] m = new int[58][58];
+    static int[][] pesos = new int[58][58];
 
     public Reader(String path) throws IOException {
         read(path);
@@ -31,12 +31,12 @@ public class Reader {
         for (int i = 0; i < 57; i++) {
             // k é auxiliar para iterar apenas a diagonal superior
             for (int k = 58 - (57 - i), j = i; k < 58; k++, j++) {
-                m[i][j + 1] = this.s.nextInt();
+                pesos[i][j + 1] = this.s.nextInt();
             }
         }
         for (int i = 0; i < 58; i++) {
             for (int j = 0; j < 58; j++) {
-                m[j][i] = m[i][j];
+                pesos[j][i] = pesos[i][j];
             }
         }
     }
