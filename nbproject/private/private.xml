@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/2015.1.08.029/NetBeansProjects/AEDS-III/src/GroupSet/RandomChange.java</file>
-            <file>file:/home/2015.1.08.029/NetBeansProjects/AEDS-III/src/GroupSet/tp01_instancia.paa</file>
-            <file>file:/home/2015.1.08.029/NetBeansProjects/AEDS-III/src/GroupSet/Reader.java</file>
-            <file>file:/home/2015.1.08.029/NetBeansProjects/AEDS-III/src/GroupSet/tp02_instancia.paa</file>
-            <file>file:/home/2015.1.08.029/NetBeansProjects/AEDS-III/src/GroupSet/Backtracking.java</file>
-            <file>file:/home/2015.1.08.029/NetBeansProjects/AEDS-III/src/GroupSet/BestFitChange.java</file>
+            <file>file:/home/giandoso/NetBeansProjects/AEDS-III/src/tsp/brazil58.tsp</file>
+            <file>file:/home/giandoso/NetBeansProjects/AEDS-III/src/GroupSet/Reader.java</file>
+            <file>file:/home/giandoso/NetBeansProjects/AEDS-III/src/GroupSet/RandomChange.java</file>
+            <file>file:/home/giandoso/NetBeansProjects/AEDS-III/src/GroupSet/testshit.java</file>
+            <file>file:/home/giandoso/NetBeansProjects/AEDS-III/src/tsp/Reader.java</file>
+            <file>file:/home/giandoso/NetBeansProjects/AEDS-III/src/tsp/NearestNeighbor.java</file>
         </group>
     </open-files>
 </project-private>
