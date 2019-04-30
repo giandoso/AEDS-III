@@ -45,40 +45,44 @@ public class NearestNeighbor {
         sequence[0] = 0;
         visited[0] = true;
         /*
-            A cada iteração devemos comparar o elemento atual com o elemento
-            mais proximo não visitado
+                            A cada iteração devemos comparar o elemento atual com o elemento
+                            mais proximo não visitado
          */
         int total = 0;
         for (int i = 1; i < 58; i++) {
-            int bestIndex = 0;
             int bestScore = 9999;
+            int bestIndex = 0;
             for (int j = 0; j < 58; j++) {
-                int local = r.pesos[i][j];
-                if (visited[j] == false) {
-                    if (local < bestScore && local != 0) {
+                int local = r.pesos[sequence[i - 1]][j];
+                System.out.println(sequence[i - 1] + "\t\t" + j + "\t\t" + r.pesos[sequence[i - 1]][j]);
+                if (visited[j] == false && i - 1 != j) {
+                    if (local < bestScore) {
                         bestIndex = j;
                         bestScore = local;
                     }
                 }
             }
-            System.out.println(i + "\t\t" + bestScore + "\t\t" + bestIndex);
-            sequence[i] = bestIndex;
             visited[bestIndex] = true;
-            total += bestScore;
+            sequence[i] = bestIndex;
         }
-        total += r.pesos[0][57];
-        System.out.println(r.pesos[0][40]);        
+        System.out.println(evaluate(sequence, r.pesos));
+
+        System.out.println(Arrays.toString(sequence));
+        System.out.println(r.pesos[29][12]);
+
+//        for (int i = 0; i < 58; i++) {
+//            System.out.println(Arrays.toString(Reader.pesos[i]));
+//        }
+        
     }
-    
-    public static int evaluate(int[] arr, int[][] m){
+
+    public static int evaluate(int[] arr, int[][] m) {
         int total = 0;
-//        System.out.println(Arrays.toString(arr));
-        for (int i = 0; i < 57; i++) {
-//            System.out.println(m[40][0]);
-//            System.out.println(m[arr[i]][arr[i+1]]);
-            total += m[arr[i]][arr[i+1]];           
+        for (int i = 1; i < 58; i++) {
+            total += m[arr[i-1]][arr[i]];
         }
         total += m[57][0];
         return total;
     }
 }
+// [0, 29, 12, 39, 24, 8, 31, 19, 52, 49, 3, 17, 43, 23, 57, 4, 26, 42, 11, 56, 22, 53, 54, 1, 40, 34, 9, 51, 50, 46, 48, 2, 47, 38, 28, 35, 16, 25, 5, 18, 27, 13, 36, 33, 45, 55, 44, 32, 14, 20, 10, 15, 21, 7, 37, 41, 30, 6]
