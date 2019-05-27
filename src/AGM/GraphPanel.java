@@ -1,39 +1,12 @@
-/*
- * The MIT License
- *
- * Copyright 2019 giandoso.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
 package AGM;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.io.IOException;
-import java.util.Random;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 /**
  *
@@ -55,13 +28,23 @@ public class GraphPanel extends javax.swing.JPanel {
             DAO dao = new DAO();
             Graphics2D g2d = (Graphics2D) g;
 
+            List<Aresta> arestas = DAO.g.getArestasOrdenadas();
+            for (Aresta a : arestas) {
+                int xOrigem = (int) DAO.g.lista_vertices.get(a.getOrigem()).getX() * 5;
+                int yOrigem = (int) DAO.g.lista_vertices.get(a.getOrigem()).getY() * 5;
+                int xDestino = (int) DAO.g.lista_vertices.get(a.getDestino()).getX() * 5;
+                int yDestino = (int) DAO.g.lista_vertices.get(a.getDestino()).getY() * 5;
+//                System.out.println(xOrigem + "\t\t" + yOrigem + "\t\t" + xDestino + "\t\t" + yDestino);
+                g2d.setColor(Color.BLACK);
+                g2d.drawLine(xOrigem, yOrigem, xDestino, yDestino);
+            }
+            
             g2d.setColor(Color.red);
 
             for (double[] tupla : Reader.tuplas) {
-                g2d.fillOval((int)tupla[0]*5, (int)tupla[1]*5, 7, 7);
+                g2d.fillOval((int) (tupla[0] - 1) * 5, (int) (tupla[1] - 1) * 5, 7, 7);
             }
-            
-            
+
         } catch (IOException ex) {
             Logger.getLogger(GraphPanel.class.getName()).log(Level.SEVERE, null, ex);
         }

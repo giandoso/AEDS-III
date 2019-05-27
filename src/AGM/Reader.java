@@ -48,4 +48,14 @@ public class Reader {
         distancia = java.lang.Math.pow(distancia, 0.5);
         return distancia;
     }
+
+    public Graph buildGrafo() {
+        Graph grafo = new Graph(this.tuplas);
+        for (int i = 0; i < this.tuplas.size(); i++) {
+            for (int j = 0; j < this.tuplas.size(); j++) {
+                grafo.addAresta(i, j, getDistancia(tuplas.get(i), tuplas.get(j)));
+            }
+        }
+        return grafo;
+    }
 }
