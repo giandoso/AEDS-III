@@ -12,39 +12,35 @@ import java.util.logging.Logger;
  *
  * @author giandoso
  */
-public class GraphPanel extends javax.swing.JPanel {
+public class AGM_panel extends javax.swing.JPanel {
+
+    public Graphics2D g2d;
+    public Kruskal k;
+    public Graph g;
 
     /**
-     * Creates new form NewJPanel
+     * Creates new form AGM_panel
      */
-    public Graphics2D g2d;
-    static Graph g;
-
-    public GraphPanel() {
+    public AGM_panel() {
         initComponents();
         try {
-            DAO dao = new DAO();
-        } catch (IOException ex) {
-            Logger.getLogger(GraphPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        g2d = (Graphics2D) g;
-
-        try {
-            drawGraph();
+            g = GraphPanel.getGraph();
+            k = new Kruskal(g);
+            System.out.println("Grafo e kruskal");
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
-    public void drawGraph() {
-        
-        List<Aresta> arestas = g.getArestasOrdenadas();
+    public void paintComponent(Graphics gr) {
+        super.paintComponent(gr);
+
+        g2d = (Graphics2D) gr;
+        k.run();
+        List<Aresta> arestas = k.getX();
+        System.out.println("");
         for (Aresta a : arestas) {
+            System.out.println(a.getOrigem() + " -> " + a.getDestino());
             int xOrigem = (int) g.lista_vertices.get(a.getOrigem()).getX() * 5;
             int yOrigem = (int) g.lista_vertices.get(a.getOrigem()).getY() * 5;
             int xDestino = (int) g.lista_vertices.get(a.getDestino()).getX() * 5;
@@ -58,19 +54,11 @@ public class GraphPanel extends javax.swing.JPanel {
         for (double[] tupla : Reader.tuplas) {
             g2d.fillOval((int) (tupla[0] - 1) * 5, (int) (tupla[1] - 1) * 5, 7, 7);
         }
+
     }
 
     public void redraw() {
-        for (int i = 0; i < 50; i++) {
-            for (int j = 0; j < 50; j++) {
-                g.removeAresta(i, j);
-            }
-        }
         repaint();
-    }
-    
-    static Graph getGraph(){
-        return g;        
     }
 
     /**

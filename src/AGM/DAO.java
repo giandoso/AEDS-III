@@ -9,11 +9,17 @@ import java.util.List;
  */
 public class DAO {
 
-    static Graph g;
+    public Graph g;
 
     public DAO() throws IOException {
         Reader r = new Reader("src/AGM/newInstance.tsp");
         g = r.buildGrafo();
-        List<Aresta> arestas = g.getArestasOrdenadas();
     }
+
+    public Graph getG() {
+        return g;
+    }
+    
+    
+    
 }

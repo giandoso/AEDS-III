@@ -33,7 +33,6 @@ public class Reader {
             //adiciona aux em tuplas
             tuplas.add(aux);
         }
-
     }
 
     public void printaTuplas() {
@@ -50,6 +49,7 @@ public class Reader {
     }
 
     public Graph buildGrafo() {
+        System.out.println("Adicionando arestas");
         Graph grafo = new Graph(this.tuplas);
         for (int i = 0; i < this.tuplas.size(); i++) {
             for (int j = 0; j < this.tuplas.size(); j++) {

@@ -23,7 +23,7 @@ public class Graph {
             Vertice v = new Vertice(i, tuplas.get(i)[0], tuplas.get(i)[1]);
             lista_vertices.add(v);
         }
-        System.out.println(lista_vertices.size() + "easd");
+        System.out.println("Grafo criado!");
 
     }
 
@@ -54,6 +54,7 @@ public class Graph {
     public void removeAresta(int origem, int destino) {
         for (int i = 0; i < lista_arestas[origem].size(); i++) {
             if (lista_arestas[origem].get(i).getDestino() == destino) {
+                System.out.println("Aresta "+ origem +"->" + destino + " removida");
                 lista_arestas[origem].remove(i);
             }
 
