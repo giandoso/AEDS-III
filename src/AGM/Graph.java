@@ -54,8 +54,8 @@ public class Graph {
     public void removeAresta(int origem, int destino) {
         for (int i = 0; i < lista_arestas[origem].size(); i++) {
             if (lista_arestas[origem].get(i).getDestino() == destino) {
-                System.out.println("Aresta "+ origem +"->" + destino + " removida");
                 lista_arestas[origem].remove(i);
+                System.out.println("Aresta "+ origem +"->" + destino + " removida");
             }
 
         }

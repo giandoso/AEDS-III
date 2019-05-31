@@ -18,7 +18,6 @@ public class GraphPanel extends javax.swing.JPanel {
      * Creates new form NewJPanel
      */
     public Graphics2D g2d;
-    static Graph g;
 
     public GraphPanel() {
         initComponents();
@@ -43,12 +42,12 @@ public class GraphPanel extends javax.swing.JPanel {
 
     public void drawGraph() {
         
-        List<Aresta> arestas = g.getArestasOrdenadas();
+        List<Aresta> arestas = DAO.g.getArestasOrdenadas();
         for (Aresta a : arestas) {
-            int xOrigem = (int) g.lista_vertices.get(a.getOrigem()).getX() * 5;
-            int yOrigem = (int) g.lista_vertices.get(a.getOrigem()).getY() * 5;
-            int xDestino = (int) g.lista_vertices.get(a.getDestino()).getX() * 5;
-            int yDestino = (int) g.lista_vertices.get(a.getDestino()).getY() * 5;
+            int xOrigem = (int) DAO.g.lista_vertices.get(a.getOrigem()).getX() * 5;
+            int yOrigem = (int) DAO.g.lista_vertices.get(a.getOrigem()).getY() * 5;
+            int xDestino = (int) DAO.g.lista_vertices.get(a.getDestino()).getX() * 5;
+            int yDestino = (int) DAO.g.lista_vertices.get(a.getDestino()).getY() * 5;
             g2d.setColor(Color.BLACK);
             g2d.drawLine(xOrigem, yOrigem, xDestino, yDestino);
         }
@@ -61,17 +60,9 @@ public class GraphPanel extends javax.swing.JPanel {
     }
 
     public void redraw() {
-        for (int i = 0; i < 50; i++) {
-            for (int j = 0; j < 50; j++) {
-                g.removeAresta(i, j);
-            }
-        }
         repaint();
     }
     
-    static Graph getGraph(){
-        return g;        
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.

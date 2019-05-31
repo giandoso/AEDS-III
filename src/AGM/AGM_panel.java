@@ -1,9 +1,12 @@
 package AGM;
 
+import static AGM.DAO.ops;
+import static AGM.Reader.tuplas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,42 +18,37 @@ import java.util.logging.Logger;
 public class AGM_panel extends javax.swing.JPanel {
 
     public Graphics2D g2d;
-    public Kruskal k;
     public Graph g;
+    public List<Aresta> arestas;
+    
 
     /**
      * Creates new form AGM_panel
      */
     public AGM_panel() {
         initComponents();
-        try {
-            g = GraphPanel.getGraph();
-            k = new Kruskal(g);
-            System.out.println("Grafo e kruskal");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
     }
 
-    public void paintComponent(Graphics gr) {
-        super.paintComponent(gr);
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        try {
 
-        g2d = (Graphics2D) gr;
-        k.run();
-        List<Aresta> arestas = k.getX();
-        System.out.println("");
-        for (Aresta a : arestas) {
-            System.out.println(a.getOrigem() + " -> " + a.getDestino());
-            int xOrigem = (int) g.lista_vertices.get(a.getOrigem()).getX() * 5;
-            int yOrigem = (int) g.lista_vertices.get(a.getOrigem()).getY() * 5;
-            int xDestino = (int) g.lista_vertices.get(a.getDestino()).getX() * 5;
-            int yDestino = (int) g.lista_vertices.get(a.getDestino()).getY() * 5;
-            g2d.setColor(Color.BLACK);
-            g2d.drawLine(xOrigem, yOrigem, xDestino, yDestino);
+            g2d = (Graphics2D) g;
+            System.out.println("");
+            for (Aresta a : arestas) {
+//            System.out.println(a.getOrigem() + " -> " + a.getDestino());
+                int xOrigem = (int) DAO.g.lista_vertices.get(a.getOrigem()).getX() * 5;
+                int yOrigem = (int) DAO.g.lista_vertices.get(a.getOrigem()).getY() * 5;
+                int xDestino = (int) DAO.g.lista_vertices.get(a.getDestino()).getX() * 5;
+                int yDestino = (int) DAO.g.lista_vertices.get(a.getDestino()).getY() * 5;
+                g2d.setColor(Color.BLACK);
+                g2d.drawLine(xOrigem, yOrigem, xDestino, yDestino);
+            }
+
+        } catch (Exception e) {
         }
 
         g2d.setColor(Color.red);
-
         for (double[] tupla : Reader.tuplas) {
             g2d.fillOval((int) (tupla[0] - 1) * 5, (int) (tupla[1] - 1) * 5, 7, 7);
         }
@@ -58,6 +56,27 @@ public class AGM_panel extends javax.swing.JPanel {
     }
 
     public void redraw() {
+        System.out.println("Redesenhando");
+        Kruskal k = new Kruskal();
+        
+        
+        String[] s = DAO.ops.get(0);
+        DAO.ops.remove(0);
+        
+        System.out.println(s[0]);
+        if("rm".equals(s[0])){
+            DAO.g.removeAresta(Integer.parseInt(s[1]), Integer.parseInt(s[2]));
+        }
+        if("add".equals(s[0])){
+            double distancia = Reader.getDistancia(tuplas.get(Integer.parseInt(s[1])), tuplas.get(Integer.parseInt(s[2])));
+            DAO.g.addAresta(Integer.parseInt(s[1]), Integer.parseInt(s[2]), distancia);
+        }
+        List<Aresta> arestas_oredenas = DAO.g.getArestasOrdenadas();
+        k.run(arestas_oredenas);
+        this.arestas = k.getX();
+
+        
+
         repaint();
     }
 

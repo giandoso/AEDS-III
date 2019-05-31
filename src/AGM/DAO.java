@@ -1,6 +1,8 @@
 package AGM;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -9,17 +11,14 @@ import java.util.List;
  */
 public class DAO {
 
-    public Graph g;
+    static Graph g;
+    static ArrayList<String[]> ops;
 
     public DAO() throws IOException {
-        Reader r = new Reader("src/AGM/newInstance.tsp");
-        g = r.buildGrafo();
-    }
+        Reader tuplas = new Reader("src/AGM/newInstance.tsp", "tuplas");
+        g = tuplas.buildGrafo();
+        Reader operacoes = new Reader("src/AGM/operacoes.agm1", "operacoes");
+        ops = operacoes.getOperacoes();
 
-    public Graph getG() {
-        return g;
     }
-    
-    
-    
 }

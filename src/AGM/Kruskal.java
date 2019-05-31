@@ -13,21 +13,26 @@ import java.util.List;
  */
 public class Kruskal {
 
-    static List<Aresta> X = new ArrayList<>();
-    static List<Aresta> A;
+    List<Aresta> X;
+
     ArrayList<ArrayList<Integer>> c = new ArrayList<ArrayList<Integer>>();
     public Graph grafo;
-    
-    public Kruskal(Graph grafo) {
-        this.grafo = grafo;
-        run();
+
+    public Kruskal() {
+        X = new ArrayList<>();
+        System.out.println("Kruskal criado!");
     }
 
-    public void run() {
+    public void run(List<Aresta> A) {
+        this.grafo = DAO.g;
+        System.out.println("Executando kruskal");
         for (int i = 0; i < grafo.getNumVertices(); i++) {
             criarConjunto(i);
         }
-        A = grafo.getArestasOrdenadas();
+//        System.out.println("Arestas kruskal");
+//        for (Aresta aresta : DAO.g.getArestasOrdenadas()) {
+//            System.out.println(aresta.getPeso() + "\t\t" + aresta.getOrigem() + "\t\t" + aresta.getDestino());
+//        }
         for (Aresta a : A) {
             //  O seguinte trecho é responsavel por encontrar os index
             // de origem e destino dentro da lista de conjuntos c
@@ -92,7 +97,7 @@ public class Kruskal {
         System.out.println("Arquivo de saida '" + fileName + ".csv' criado com sucesso!");
     }
 
-    public static List<Aresta> getX() {
+    public List<Aresta> getX() {
         return X;
     }
 

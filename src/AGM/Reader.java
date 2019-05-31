@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -15,8 +16,37 @@ public class Reader {
     FileReader scanner;
     BufferedReader file;
     static ArrayList<double[]> tuplas = new ArrayList<>();
+    public ArrayList<String[]> operacoes = new ArrayList<>();
 
-    public Reader(String fileName) throws FileNotFoundException, IOException {
+    
+    public Reader(String fileName, String op) throws FileNotFoundException, IOException {
+        if (op == "tuplas") {
+            runTuplas(fileName);
+        }
+        if (op == "operacoes") {
+            runOperacoes(fileName);
+            
+        }
+    }
+
+    private void runOperacoes(String fileName) throws FileNotFoundException, IOException {
+        this.scanner = new FileReader(fileName);
+        BufferedReader file = new BufferedReader(scanner);
+
+        while (file.ready()) {
+            String line = file.readLine();
+            String[] s = line.split(";");
+            operacoes.add(s);
+        }
+    }
+
+    public ArrayList<String[]> getOperacoes() {
+        return operacoes;
+    }
+    
+    
+    
+    public void runTuplas(String fileName) throws FileNotFoundException, IOException {
         this.scanner = new FileReader(fileName);
         BufferedReader file = new BufferedReader(scanner);
         file.readLine();
@@ -41,7 +71,7 @@ public class Reader {
         }
     }
 
-    public double getDistancia(double[] v1, double[] v2) {
+    public static double getDistancia(double[] v1, double[] v2) {
         double distancia;
         distancia = java.lang.Math.pow((v2[0] - v1[0]), 2) + java.lang.Math.pow((v2[1] - v1[1]), 2);
         distancia = java.lang.Math.pow(distancia, 0.5);
@@ -58,4 +88,5 @@ public class Reader {
         }
         return grafo;
     }
+
 }
