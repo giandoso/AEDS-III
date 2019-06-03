@@ -24,9 +24,11 @@ public class GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         graphPanel1 = new AGM.GraphPanel();
-        jButton1 = new javax.swing.JButton();
+        next_button = new javax.swing.JButton();
         aGM_panel1 = new AGM.AGM_panel();
-        jButton2 = new javax.swing.JButton();
+        next_x100_button = new javax.swing.JButton();
+        next_x50_button = new javax.swing.JButton();
+        next_x10_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,10 +43,10 @@ public class GUI extends javax.swing.JFrame {
             .addGap(0, 502, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Next");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        next_button.setText("Next");
+        next_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                next_buttonActionPerformed(evt);
             }
         });
 
@@ -59,10 +61,24 @@ public class GUI extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jButton2.setText("Next(x100)");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        next_x100_button.setText("Next(x100)");
+        next_x100_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                next_x100_buttonActionPerformed(evt);
+            }
+        });
+
+        next_x50_button.setText("Next(x50)");
+        next_x50_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                next_x50_buttonActionPerformed(evt);
+            }
+        });
+
+        next_x10_button.setText("Next(x10)");
+        next_x10_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                next_x10_buttonActionPerformed(evt);
             }
         });
 
@@ -76,14 +92,17 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(graphPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(aGM_panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(aGM_panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jButton1)
+                        .addComponent(next_button)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(next_x10_button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(next_x50_button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(next_x100_button)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,20 +113,30 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(graphPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(next_button)
+                    .addComponent(next_x100_button)
+                    .addComponent(next_x50_button)
+                    .addComponent(next_x10_button))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        graphPanel1.redraw();
-        aGM_panel1.redraw();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void next_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_next_buttonActionPerformed
+        try{
+            graphPanel1.redraw();
+            aGM_panel1.redraw();
+        }catch(Exception e){
+            System.out.println("Estorou!");
+            this.next_button.setEnabled(false);
+            this.next_x10_button.setEnabled(false);
+            this.next_x50_button.setEnabled(false);
+            this.next_x100_button.setEnabled(false);
+        }        
+    }//GEN-LAST:event_next_buttonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void next_x100_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_next_x100_buttonActionPerformed
         try {
             int i = 0;
             while (i < 100) {
@@ -115,14 +144,48 @@ public class GUI extends javax.swing.JFrame {
                 aGM_panel1.redraw();
                 i++;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Estorou!");
-            this.jButton2.setEnabled(false);
-            this.jButton1.setEnabled(false);
+            this.next_button.setEnabled(false);
+            this.next_x10_button.setEnabled(false);
+            this.next_x50_button.setEnabled(false);
+            this.next_x100_button.setEnabled(false);
         }
+    }//GEN-LAST:event_next_x100_buttonActionPerformed
 
+    private void next_x50_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_next_x50_buttonActionPerformed
+        try {
+            int i = 0;
+            while (i < 50) {
+                graphPanel1.redraw();
+                aGM_panel1.redraw();
+                i++;
+            }
+        } catch (Exception e) {
+            System.out.println("Estorou!");
+            this.next_button.setEnabled(false);
+            this.next_x10_button.setEnabled(false);
+            this.next_x50_button.setEnabled(false);
+            this.next_x100_button.setEnabled(false);
+        }
+    }//GEN-LAST:event_next_x50_buttonActionPerformed
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void next_x10_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_next_x10_buttonActionPerformed
+        try {
+            int i = 0;
+            while (i < 10) {
+                graphPanel1.redraw();
+                aGM_panel1.redraw();
+                i++;
+            }
+        } catch (Exception e) {
+            System.out.println("Estorou!");
+            this.next_button.setEnabled(false);
+            this.next_x10_button.setEnabled(false);
+            this.next_x50_button.setEnabled(false);
+            this.next_x100_button.setEnabled(false);
+        }
+    }//GEN-LAST:event_next_x10_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,7 +225,9 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private AGM.AGM_panel aGM_panel1;
     private AGM.GraphPanel graphPanel1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton next_button;
+    private javax.swing.JButton next_x100_button;
+    private javax.swing.JButton next_x10_button;
+    private javax.swing.JButton next_x50_button;
     // End of variables declaration//GEN-END:variables
 }

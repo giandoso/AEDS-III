@@ -24,7 +24,6 @@ public class Graph {
             lista_vertices.add(v);
         }
         System.out.println("Grafo criado!");
-
     }
 
     public void setPesoAresta(int origem, int destino, double peso) {

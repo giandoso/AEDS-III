@@ -36,7 +36,6 @@ public class AGM_panel extends javax.swing.JPanel {
             g2d = (Graphics2D) g;
             System.out.println("");
             for (Aresta a : arestas) {
-//            System.out.println(a.getOrigem() + " -> " + a.getDestino());
                 int xOrigem = (int) DAO.g.lista_vertices.get(a.getOrigem()).getX() * 5;
                 int yOrigem = (int) DAO.g.lista_vertices.get(a.getOrigem()).getY() * 5;
                 int xDestino = (int) DAO.g.lista_vertices.get(a.getDestino()).getX() * 5;
@@ -46,6 +45,7 @@ public class AGM_panel extends javax.swing.JPanel {
             }
 
         } catch (Exception e) {
+            System.out.println(e);
         }
 
         g2d.setColor(Color.red);

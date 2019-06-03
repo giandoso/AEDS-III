@@ -14,8 +14,8 @@ import java.util.List;
 public class Kruskal {
 
     List<Aresta> X;
-
     ArrayList<ArrayList<Integer>> c = new ArrayList<ArrayList<Integer>>();
+    
     public Graph grafo;
 
     public Kruskal() {
@@ -29,10 +29,6 @@ public class Kruskal {
         for (int i = 0; i < grafo.getNumVertices(); i++) {
             criarConjunto(i);
         }
-//        System.out.println("Arestas kruskal");
-//        for (Aresta aresta : DAO.g.getArestasOrdenadas()) {
-//            System.out.println(aresta.getPeso() + "\t\t" + aresta.getOrigem() + "\t\t" + aresta.getDestino());
-//        }
         for (Aresta a : A) {
             //  O seguinte trecho é responsavel por encontrar os index
             // de origem e destino dentro da lista de conjuntos c
